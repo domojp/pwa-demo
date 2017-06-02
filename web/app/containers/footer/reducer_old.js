@@ -6,12 +6,14 @@ import {mergePayload} from '../../utils/reducer-utils'
 import {TextLink} from '../../utils/parser-utils'
 
 export const initialState = Immutable.fromJS({
-    copyright: "",
-    owner: ""
+    newsletter: null,
+    navigation: new Array(5).fill(TextLink()),
+    signupStatus: constants.SIGNUP_NOT_ATTEMPTED
 })
 
 const footer = handleActions({
     [footerActions.receiveData]: mergePayload,
+    [footerActions.newsletterSignupComplete]: mergePayload
 }, initialState)
 
 

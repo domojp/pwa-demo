@@ -15,7 +15,6 @@ const imageHeight = '75vw'
 const placeholder = <SkeletonBlock height={imageHeight} />
 
 const HomeLatest = ({latest}) => {
-    console.log('latest: ', latest)
     return (
         <div className="t-home__latest">
             {latest.length > 0 ?

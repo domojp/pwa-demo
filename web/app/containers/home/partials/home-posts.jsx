@@ -11,26 +11,30 @@ import SkeletonBlock from 'progressive-web-sdk/dist/components/skeleton-block'
 const imageHeight = '75vw'
 const placeholder = <SkeletonBlock height={imageHeight} />
 
-const HomeServices = ({services}) => {
+import DangerousHTML from 'progressive-web-sdk/dist/components/dangerous-html'
+
+const HomePosts = ({posts}) => {
     return (
-        <div className="t-home__services">
-            {services.length > 0 ?
-                services.map((service, index) => {
-                    return Object.keys(service).length > 0 ?
-                        (<Tile
+        <div className="t-home__posts">
+            {posts.length > 0 ?
+                posts.map((post, index) => {
+                    return Object.keys(post).length > 0 ?
+                        (<Tile isColumn={false}
                             key={index}
-                            href={"/" + service.morehref}
+                            href={"/" + post.morehref}
                             imageProps={{
-                                src: "/" + service.icon.src,
-                                width: "72px",
-                                height: "72px",
-                                alt: service.icon.alt
+                                src: "/" + post.thumbnail.src,
+                                width: "90px",
+                                height: "75px",
+                                alt: post.thumbnail.alt
                             }}
                             options={[{
                                 //label: "Lead: ",
-                                value: service.lead
+                                value: <DangerousHTML html={
+                                    post.leadhtml
+                                    }>{(htmlObj) => <div dangerouslySetInnerHTML={htmlObj} />}</DangerousHTML>
                             }]}
-                            title={service.title}
+                            title={post.title}
                         />)
                     :
                         null
@@ -45,12 +49,13 @@ const HomeServices = ({services}) => {
     )
 }
 
-HomeServices.propTypes = {
-    services: PropTypes.array
+HomePosts.propTypes = {
+    posts: PropTypes.array
 }
 
 const mapStateToProps = createPropsSelector({
-    services: selectors.getHomeServices
+    posts: selectors.getHomePosts
+
 })
 
-export default connect(mapStateToProps)(HomeServices)
+export default connect(mapStateToProps)(HomePosts)

@@ -1,20 +1,9 @@
-import {parseTextLink} from '../../../utils/parser-utils'
-
-export const parseNewsLetter = ($content) => {
-    const $form = $content.find('footer .form.subscribe')
-    const method = $form.attr('method')
-    const action = $form.attr('action')
+export const parseFooter = ($, $content) => {
+    const $footer = $content.find('footer#footer')
+    const copyright = $footer.find('p.fl_left').text()
+    const owner = $footer.find('p.fl_right').text()
     return {
-        action,
-        method: method ? method.toLowerCase() : ''
+        copyright,
+        owner
     }
-}
-
-const FOOTER_LINK_SELECTOR = 'footer .footer.links li a'
-
-export const parseNavigation = ($, $content) => {
-    return [].map.call(
-        $content.find(FOOTER_LINK_SELECTOR),
-        (link) => parseTextLink($(link))
-    )
 }

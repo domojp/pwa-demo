@@ -1,33 +1,38 @@
 import React, {PropTypes} from 'react'
 import classNames from 'classnames'
+import {createPropsSelector} from 'reselect-immutable-helpers'
+import * as selectors from '../selectors'
+import {connect} from 'react-redux'
 
-import DangerousHTML from 'progressive-web-sdk/dist/components/dangerous-html'
 import Link from 'progressive-web-sdk/dist/components/link'
 import {HeaderBarTitle} from 'progressive-web-sdk/dist/components/header-bar'
 
-import logo from '../../../static/svg/logo.svg'
-
-const HeaderTitle = ({isCollapsed}) => {
-    const linkClassName = classNames('t-header__link', {
-        't--fade-sparkles': isCollapsed
-    })
+const HeaderTitle = ({title, menu}) => {
 
     return (
-        <div className="u-flex">
-            <HeaderBarTitle>
-                <Link href="/" className={linkClassName}>
-                    <DangerousHTML html={logo}>
-                        {(htmlObj) => <div className="t-header__logo" dangerouslySetInnerHTML={htmlObj} />}
-                    </DangerousHTML>
-                    <h1 className="u-visually-hidden">Merlin's Potions</h1>
-                </Link>
-            </HeaderBarTitle>
-        </div>
+        title ?
+            <div className="u-flex">
+                <HeaderBarTitle>
+                    <h1>{title}</h1>
+                    menu.map((item) =>
+                        <Link href={"/"+menu.itemhref}>
+                            <h1>{manu.item}</h1>
+                        </Link>
+                    )
+                </HeaderBarTitle>
+            </div>
+        :
+            <div />
     )
 }
 
 HeaderTitle.propTypes = {
-    isCollapsed: PropTypes.bool
+    header: PropTypes.object
 }
 
-export default HeaderTitle
+const mapStateToProps = createPropsSelector({
+    header: selectors.getHeader
+})
+
+export default connect(mapStateToProps)(HeaderTitle)
+

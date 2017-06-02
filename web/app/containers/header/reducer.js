@@ -4,11 +4,12 @@ import * as headerActions from './actions'
 import {mergePayload} from '../../utils/reducer-utils'
 
 export const initialState = Immutable.fromJS({
-    isCollapsed: false
+    title: '',
+    menu: []
 })
 
 const header = handleActions({
-    [headerActions.toggleHeader]: mergePayload
+    [headerActions.receiveData]: mergePayload
 }, initialState)
 
 

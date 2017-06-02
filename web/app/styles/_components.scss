@@ -7,3 +7,9 @@
 @import '../components/product-item/base';
 @import '../components/notification/base';
 @import '../components/notification-manager/base';
+
+@import 'node_modules/progressive-web-sdk/dist/components/image/base';
+@import 'node_modules/progressive-web-sdk/dist/components/tile/base';
+@import 'node_modules/progressive-web-sdk/dist/components/carousel/base';
+@import 'node_modules/progressive-web-sdk/dist/components/list/base';
+@import 'node_modules/progressive-web-sdk/dist/components/list-tile/base';

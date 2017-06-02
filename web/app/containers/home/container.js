@@ -1,9 +1,11 @@
 import React from 'react'
 
 // Partials
-import HomeHero from './partials/home-hero'
+import HomeHero     from './partials/home-hero'
 import HomeServices from './partials/home-services'
-import HomeLatest from './partials/home-latest'
+import HomeLatest   from './partials/home-latest'
+import HomePosts    from './partials/home-posts'
+import HomeCategories    from './partials/home-categories'
 
 const Home = () => {
     return (
@@ -12,6 +14,8 @@ const Home = () => {
             <HomeHero />
             <HomeServices />
             <HomeLatest />
+            <HomePosts />
+            <HomeCategories />
         </div>
     )
 }

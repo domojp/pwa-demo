@@ -34,9 +34,6 @@ import * as cartActions from '../../store/cart/actions'
 import * as homeActions from '../home/actions'
 import * as loginActions from '../login/actions'
 import * as productDetailsActions from '../product-details/actions'
-
-import * as headerActions from '../header/actions'
-
 import * as footerActions from '../footer/actions'
 import * as navigationActions from '../navigation/actions'
 import * as productsActions from '../../store/products/actions'
@@ -178,7 +175,6 @@ export const fetchPage = (url, pageComponent, routeName, fetchUrl) => {
                     // Resets the cart count to 0
                     dispatch(cartActions.getCart())
                 }
-                dispatch(headerActions.process(receivedAction))
                 dispatch(footerActions.process(receivedAction))
                 dispatch(navigationActions.process(receivedAction))
 
